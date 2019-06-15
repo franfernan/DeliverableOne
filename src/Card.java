@@ -5,22 +5,44 @@
  */
 
 
+
 /**
  * A class to be used as the base Card class for the project. Must be general
- * enough to be instantiated for any Card game. Students wishing to add to the code 
- * should remember to add themselves as a modifier.
+ * enough to be instantiated for any Card game. Students wishing to add to the
+ * code should remember to add themselves as a modifier.
+ * 
  * @author dancye, 2018
  */
-public abstract class Card 
-{
-    //default modifier for child classes
+public class Card {
+	// default modifier for child classes
+
+	/**
+	 * Students should implement this method for their specific children classes
+	 * 
+	 * @return a String representation of a card. Could be an UNO card, a regular
+	 *         playing card etc.
+	 */
+
+	final static String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
+    final static String[] value = {"Ace", "2", "3","4","5","6","7","8", "9","10", "Jack", "Queen", "King"};
+	private double cardNum;
     
-    /**
-     * Students should implement this method for their specific children classes 
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
+    public Card(int cardNum) {
+		this.cardNum = cardNum;
+	}
     
-    @Override
-    public abstract String toString();
+    public String getValue() {
+    	return value[(int)(cardNum / 13)];
+    }
     
+    public String getSuit() {
+    	return suits[(int)(cardNum % 13)];
+    }
+
+	@Override
+	public String toString() {
+		return value[(int)(cardNum % 13)] + " of " + suits[(int)(cardNum / 13)];
+		
+	}
+
 }
